@@ -6,12 +6,6 @@ on:
       - main
   pull_request:
 
-permissions: 
-  contents: read 
-  id-token: write 
-  issues: write 
-  pull-requests: write
-
 jobs:
   build-and-deploy:
     name: Build, Push & Deploy
@@ -22,10 +16,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v6
 
+      # 1.5 Check for leaked secrets
       - name: Secret Scanning
-      uses: trufflesecurity/trufflehog@main
-      with:
-        extra_args: --results=verified,unknown
+        uses: trufflesecurity/trufflehog@main
+        with:
+          extra_args: --results=verified,unknown
 
       # 2. Set up Docker Buildx for efficient layer caching
       - name: Set up Docker Buildx
