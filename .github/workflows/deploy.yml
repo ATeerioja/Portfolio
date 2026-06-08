@@ -11,17 +11,23 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # 0. 
+      - name: Scan for secrets
+        uses: trufflesecurity/trufflehog@main
+        with:
+          scanArguments: "--only-verified"
+
       # 1. Check out the code
       - name: Checkout
         uses: actions/checkout@v6
 
       # 2. Set up Docker Buildx for efficient layer caching
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
+        uses: docker/setup-buildx-action@v4
 
       # 3. Cache Docker layers between runs — speeds up builds significantly
       - name: Cache Docker layers
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: /tmp/.buildx-cache
           key: ${{ runner.os }}-buildx-${{ github.sha }}
@@ -30,7 +36,7 @@ jobs:
 
       # 4. Build the Docker image (validates your Dockerfile before deploying)
       - name: Build Docker image
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         with:
           context: .
           push: false  # just build; Fly.io handles the actual push below
