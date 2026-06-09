@@ -13,7 +13,7 @@ import Hero    from './sections/Hero.jsx'
 import About   from './sections/About.jsx'
 import Projects from './sections/Projects.jsx'
 import Contact from './sections/Contact.jsx'
-import Blog from './sections/Contact.jsx'
+import Blog from './sections/Blog.jsx'
 import config  from './config.js'
 
 export default function App() {
