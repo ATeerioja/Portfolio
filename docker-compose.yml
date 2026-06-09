@@ -2,8 +2,13 @@ services:
   portfolio:
     build: .
     ports:
-      - "3000:80"   # visit http://localhost:3000
-    volumes:
-      # Mount src/ so changes appear instantly without rebuilding
-      # Remove this volume in production (or CI) for a clean build
-      - ./src:/usr/share/nginx/html:ro
+      - "3000:80"   # http://localhost:3000
+
+# Development note:
+# Unlike v1, we can't just volume-mount src/ here because the browser
+# needs the *built* JS. For hot-reload during development, use:
+#
+#   npm run dev
+#
+# which runs Vite's dev server directly at http://localhost:5173.
+# Use `docker compose up` to test the production build locally.
