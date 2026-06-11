@@ -9,6 +9,7 @@ export default function Hero({ config }) {
       <h1 className="hero-name">{config.name}</h1>
       <p className="hero-sub">
         {config.title} · {config.university}<br />
+        {config.accolades}<br />
         {config.location}
       </p>
       <button
