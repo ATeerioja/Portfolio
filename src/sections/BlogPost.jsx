@@ -20,7 +20,7 @@ export default function BlogPost({ slug }) {
 
   return (
     <article className="section-inner post-view">
-      <button className="post-back" onClick={() => navigate(null)}>← back to writing</button>
+      <button className="post-back" onClick={() => navigate(null, 'blog')}>← back to writing</button>
       <p className="post-date">{post.date}</p>
       <h1 className="post-title">{post.title}</h1>
       <div

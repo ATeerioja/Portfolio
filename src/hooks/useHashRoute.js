@@ -31,7 +31,17 @@ export function useHashRoute() {
   return route
 }
 
-export function navigate(slug) {
-  window.location.hash = slug ? `#/blog/${encodeURIComponent(slug)}` : '#'
-  window.scrollTo({ top: 0, behavior: 'smooth' })
+export function navigate(slug, scrollToId) {
+  if (slug) {
+    window.location.hash = `#/blog/${encodeURIComponent(slug)}`
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  } else {
+    window.location.hash = '#'
+    if (scrollToId) {
+      // home must re-mount before the target section exists in the DOM
+      setTimeout(() => document.getElementById(scrollToId)?.scrollIntoView(), 60)
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    }
+  }
 }
