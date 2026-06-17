@@ -1,13 +1,15 @@
-# Commits and branches
+# Guide
+## Commits
 fix/ feat/ chore/
 {fix or feat or chore}: {version number} - {changes}
 
+## Branches
 git checkout -b feat/{version number}-{feature}
 git checkout main
 git merge {branch name}
 git tag {version number}
 
-# Commands
+## Commands
 npm run dev                 # Vite dev server, HMR at http://localhost:5173
 npm run build               # Production build → dist/
 npm run preview             # Preview prod build locally
@@ -15,6 +17,7 @@ npm run preview             # Preview prod build locally
 docker compose up --build   # Build + run container
 docker compose down         # Stop
 
+# Versions
 ## V1.0.0
 Claude tends to use legacy packages and old versions of builds.
 Always check what version to use and update if necessary.
