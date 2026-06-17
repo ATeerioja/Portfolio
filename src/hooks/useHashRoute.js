@@ -34,14 +34,17 @@ export function useHashRoute() {
 export function navigate(slug, scrollToId) {
   if (slug) {
     window.location.hash = `#/blog/${encodeURIComponent(slug)}`
-    window.scrollTo({ top: 0, behavior: 'smooth' })
+    window.scrollTo({ top: 0, behavior: 'instant' })
   } else {
     window.location.hash = '#'
     if (scrollToId) {
-      // home must re-mount before the target section exists in the DOM
-      setTimeout(() => document.getElementById(scrollToId)?.scrollIntoView(), 60)
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          document.getElementById(scrollToId)?.scrollIntoView({ behavior: 'instant' })
+        })
+      })
     } else {
-      window.scrollTo({ top: 0, behavior: 'smooth' })
+      window.scrollTo({ top: 0, behavior: 'instant' })
     }
   }
 }
