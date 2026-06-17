@@ -15,15 +15,21 @@ npm run preview             # Preview prod build locally
 docker compose up --build   # Build + run container
 docker compose down         # Stop
 
-# Important notes
+## V1.0.0
 Claude tends to use legacy packages and old versions of builds.
 Always check what version to use and update if necessary.
 
-## V2
+## V2.0.0
 Updated nvm, npm and Node. Manually changed the package.json versions to current ones.
 After these updates works as wanted.
 
 Migration is now completed and added a blog section.
 
-## V3
-For version 3 create the working blog feature.
+## V2.1.0
+- Improved styling by changing CSS values.
+
+## V2.2.0
+- Create a lightweight markdown delivery system to serve the blogs section of the website
+
+## V2.2.1
+- Improve Developer Documentation using Diataxis methods
