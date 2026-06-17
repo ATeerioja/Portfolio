@@ -3,36 +3,26 @@
    Theme: Warm Nordic Publication
    ========================================================== */
 
-/* --- Google Fonts --- */
-/* Add this to your index.html <head> to load Inter:
-   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300;1,9..144,400&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
-   (Replace the existing Google Fonts link)
-*/
-
 /* --- Design Tokens --- */
 :root {
-  /* Warmer dark background — sepia-tinted, not blue-black */
   --bg:             #0f0e0c;
   --bg-card:        #201e1a;
   --bg-card-hover:  #252220;
   --border:         #342f2a;
   --border-subtle:  #252220;
 
-  /* Muted sage / earthy green — warm, not electric */
   --accent:         #9aba94;
   --accent-dim:     #56764f;
   --accent-surface: rgba(154, 186, 148, 0.08);
   --accent-glow:    rgba(154, 186, 148, 0.06);
 
-  /* Text — warmer, higher contrast secondary */
   --text-primary:   #ece7de;
   --text-secondary: #a09890;
   --text-muted:     #5a5550;
 
-  /* Typography roles */
-  --font-display: 'Fraunces', Georgia, serif;   /* headings only */
-  --font-body:    'Inter', system-ui, sans-serif; /* body paragraphs */
-  --font-mono:    'IBM Plex Mono', monospace;    /* labels, nav, code */
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body:    'Inter', system-ui, sans-serif;
+  --font-mono:    'IBM Plex Mono', monospace;
 
   --radius:   5px;
   --ease:     220ms ease;
@@ -79,6 +69,15 @@ a { color: var(--accent); text-decoration: none; }
   font-weight: 600;
   letter-spacing: 0.06em;
 }
+.nav-logo-btn {
+  all: unset;
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--accent);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+}
 .nav-links {
   list-style: none;
   display: flex;
@@ -95,6 +94,8 @@ a { color: var(--accent); text-decoration: none; }
   transition: color var(--ease);
 }
 .nav-btn:hover { color: var(--text-primary); }
+.nav-btn:focus-visible,
+.nav-logo-btn:focus-visible { outline: 2px solid var(--accent-dim); outline-offset: 4px; }
 
 /* --- Section layout --- */
 section {
@@ -109,7 +110,6 @@ section:last-of-type {
   padding: 7rem 2rem;
 }
 
-/* Section labels use mono — they are data/code, not prose */
 .section-label {
   font-family: var(--font-mono);
   font-size: 0.68rem;
@@ -127,8 +127,6 @@ section:last-of-type {
   position: relative;
   overflow: hidden;
 }
-
-/* Signature: warm morning-light fog instead of cold terminal glow */
 #hero::before {
   content: '';
   position: absolute;
@@ -138,7 +136,6 @@ section:last-of-type {
     radial-gradient(ellipse 40% 50% at 20% 70%, rgba(190, 155, 100, 0.06) 0%, transparent 60%);
   pointer-events: none;
 }
-
 .hero-inner {
   max-width: var(--max-width);
   width: 100%;
@@ -146,7 +143,6 @@ section:last-of-type {
   padding: 0 2rem;
   animation: fadeUp 0.9s ease both;
 }
-
 .hero-greeting {
   font-family: var(--font-mono);
   font-size: 0.75rem;
@@ -156,18 +152,16 @@ section:last-of-type {
   margin-bottom: 1.5rem;
   opacity: 0.8;
 }
-
 .hero-name {
   font-family: var(--font-display);
   font-size: clamp(3rem, 8.5vw, 5.8rem);
-  font-weight: 300;           /* light Fraunces — more editorial */
-  font-style: italic;         /* optical size ink traps shine here */
+  font-weight: 300;
+  font-style: italic;
   line-height: 1.02;
   margin-bottom: 1.25rem;
   color: var(--text-primary);
   letter-spacing: -0.01em;
 }
-
 .hero-sub {
   font-family: var(--font-body);
   font-size: 1.075rem;
@@ -177,7 +171,6 @@ section:last-of-type {
   margin-bottom: 2.75rem;
   font-weight: 400;
 }
-
 .hero-cta {
   all: unset;
   cursor: pointer;
@@ -198,7 +191,6 @@ section:last-of-type {
   color: var(--bg);
   border-color: var(--accent);
 }
-
 .hero-scroll-hint {
   display: block;
   margin-top: 4.5rem;
@@ -219,7 +211,6 @@ section:last-of-type {
 @media (max-width: 640px) {
   .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
 }
-
 .about-heading {
   font-family: var(--font-display);
   font-size: clamp(2rem, 4.5vw, 3rem);
@@ -229,7 +220,6 @@ section:last-of-type {
   line-height: 1.18;
   color: var(--text-primary);
 }
-
 .about-bio p {
   font-family: var(--font-body);
   color: var(--text-secondary);
@@ -237,7 +227,6 @@ section:last-of-type {
   line-height: 1.85;
   margin-bottom: 1rem;
 }
-
 .skills-label {
   font-family: var(--font-mono);
   font-size: 0.68rem;
@@ -292,7 +281,6 @@ section:last-of-type {
   color: var(--text-secondary);
   border-color: var(--accent-dim);
 }
-
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -384,7 +372,7 @@ section:last-of-type {
 }
 .contact-link:hover { border-color: var(--accent); color: var(--accent); }
 
-/* --- Blog --- */
+/* --- Blog index --- */
 .blog-list {
   display: flex;
   flex-direction: column;
@@ -392,11 +380,13 @@ section:last-of-type {
   margin-top: 0.5rem;
 }
 .blog-card {
+  all: unset;
+  cursor: pointer;
   display: grid;
   grid-template-columns: 110px 1fr auto;
   align-items: center;
   gap: 1.5rem;
-  padding: 1.1rem 1.4rem;
+  padding: 1.2rem 1.4rem;
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius);
   color: var(--text-secondary);
@@ -407,24 +397,143 @@ section:last-of-type {
   background: var(--bg-card);
   color: var(--text-primary);
 }
+.blog-card:focus-visible { outline: 2px solid var(--accent-dim); outline-offset: 3px; }
 .blog-date {
   font-family: var(--font-mono);
   font-size: 0.68rem;
   color: var(--text-muted);
   letter-spacing: 0.07em;
+  align-self: start;
+  padding-top: 0.2rem;
 }
+.blog-text { display: flex; flex-direction: column; gap: 0.3rem; }
 .blog-title {
   font-family: var(--font-body);
   font-size: 0.975rem;
-  font-weight: 400;
+  font-weight: 500;
   color: inherit;
+}
+.blog-summary {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: var(--text-muted);
+  line-height: 1.55;
 }
 .blog-arrow {
   font-family: var(--font-mono);
   color: var(--text-muted);
+  transition: color var(--ease), transform var(--ease);
+}
+.blog-card:hover .blog-arrow { color: var(--accent); transform: translateX(3px); }
+
+@media (max-width: 560px) {
+  .blog-card { grid-template-columns: 1fr auto; }
+  .blog-date { grid-column: 1 / -1; padding-top: 0; }
+}
+
+/* --- Blog post view --- */
+.post-view {
+  max-width: 720px;            /* narrower measure for reading */
+  animation: fadeUp 0.6s ease both;
+}
+.post-back {
+  all: unset;
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  margin-bottom: 2.5rem;
+  display: inline-block;
   transition: color var(--ease);
 }
-.blog-card:hover .blog-arrow { color: var(--accent); }
+.post-back:hover { color: var(--accent); }
+.post-back:focus-visible { outline: 2px solid var(--accent-dim); outline-offset: 3px; }
+.post-date {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.9rem;
+}
+.post-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.1rem, 5vw, 3.2rem);
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.12;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+  margin-bottom: 2.5rem;
+}
+
+/* Rendered markdown body */
+.post-body {
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.8;
+  color: var(--text-secondary);
+}
+.post-body > * + * { margin-top: 1.4rem; }
+.post-body h2 {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 1.7rem;
+  line-height: 1.25;
+  color: var(--text-primary);
+  margin-top: 2.8rem;
+}
+.post-body h3 {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 1.3rem;
+  color: var(--text-primary);
+  margin-top: 2rem;
+}
+.post-body strong { color: var(--text-primary); font-weight: 500; }
+.post-body a {
+  color: var(--accent);
+  border-bottom: 1px solid var(--accent-dim);
+  transition: border-color var(--ease);
+}
+.post-body a:hover { border-bottom-color: var(--accent); }
+.post-body ol, .post-body ul { padding-left: 1.4rem; }
+.post-body li { margin-top: 0.5rem; }
+.post-body li::marker { color: var(--accent-dim); }
+.post-body blockquote {
+  border-left: 2px solid var(--accent-dim);
+  padding: 0.2rem 0 0.2rem 1.4rem;
+  color: var(--text-secondary);
+  font-style: italic;
+}
+.post-body code {
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 3px;
+  padding: 0.1rem 0.35rem;
+  color: var(--accent);
+}
+.post-body pre {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.2rem;
+  overflow-x: auto;
+}
+.post-body pre code {
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--text-primary);
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
 
 /* --- Footer --- */
 .footer {
@@ -450,6 +559,7 @@ section:last-of-type {
 
 /* --- Reduced motion --- */
 @media (prefers-reduced-motion: reduce) {
-  .hero-inner { animation: none; }
+  .hero-inner, .post-view { animation: none; }
   .hero-scroll-hint { animation: none; }
+  html { scroll-behavior: auto; }
 }
