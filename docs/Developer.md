@@ -37,3 +37,6 @@ Migration is now completed and added a blog section.
 
 ## V2.2.1
 - Improve Developer Documentation using Diataxis methods
+
+## V2.3.0
+- Add a CV-section that is formatted as a one page ready-to-print and professional looking.
